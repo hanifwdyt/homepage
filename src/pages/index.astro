@@ -31,7 +31,7 @@ const apps = [
 ];
 ---
 
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -40,20 +40,47 @@ const apps = [
       name="description"
       content="Things I build and run on the internet."
     />
+    <script is:inline>
+      const theme = localStorage.getItem('theme');
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else if (!window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
   </head>
-  <body class="bg-neutral-950 text-neutral-100 min-h-screen">
+  <body class="bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 min-h-screen transition-colors">
     <main class="max-w-2xl mx-auto px-6 py-20">
-      <!-- Hero -->
-      <section class="mb-16">
-        <h1 class="text-4xl font-bold tracking-tight mb-3">hanif.app</h1>
-        <p class="text-neutral-400 text-lg">
-          Small tools I build to solve my own problems.
-        </p>
-      </section>
+      <!-- Header with theme toggle -->
+      <div class="flex items-center justify-between mb-16">
+        <section>
+          <h1 class="text-4xl font-bold tracking-tight mb-3">hanif.app</h1>
+          <p class="text-neutral-500 dark:text-neutral-400 text-lg">
+            Small tools I build to solve my own problems.
+          </p>
+        </section>
+        <button
+          id="theme-toggle"
+          type="button"
+          class="p-2 rounded-lg text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          aria-label="Toggle theme"
+        >
+          <!-- Sun icon (shown in dark mode) -->
+          <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <!-- Moon icon (shown in light mode) -->
+          <svg class="w-5 h-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </div>
 
       <!-- Apps -->
       <section>
-        <h2 class="text-sm font-medium text-neutral-500 uppercase tracking-widest mb-6">
+        <h2 class="text-sm font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-6">
           Apps
         </h2>
         <div class="space-y-4">
@@ -62,10 +89,10 @@ const apps = [
               href={app.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="block group border border-neutral-800 rounded-xl p-5 hover:border-neutral-600 transition-colors"
+              class="block group border border-neutral-200 dark:border-neutral-800 rounded-xl p-5 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors"
             >
               <div class="flex items-start gap-4">
-                <div class="mt-0.5 p-2 rounded-lg bg-neutral-900 text-neutral-400 group-hover:text-neutral-200 transition-colors">
+                <div class="mt-0.5 p-2 rounded-lg bg-neutral-100 dark:bg-neutral-900 text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="w-5 h-5"
@@ -82,10 +109,10 @@ const apps = [
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-semibold text-neutral-100 group-hover:text-white transition-colors">
+                  <h3 class="font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-black dark:group-hover:text-white transition-colors">
                     {app.name}
                   </h3>
-                  <p class="text-sm text-neutral-400 mt-1 leading-relaxed">
+                  <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-1 leading-relaxed">
                     {app.description}
                   </p>
                 </div>
@@ -96,16 +123,23 @@ const apps = [
       </section>
 
       <!-- Footer -->
-      <footer class="mt-20 pt-8 border-t border-neutral-800">
-        <p class="text-sm text-neutral-600">
+      <footer class="mt-20 pt-8 border-t border-neutral-200 dark:border-neutral-800">
+        <p class="text-sm text-neutral-400 dark:text-neutral-600">
           Built by Hanif &middot; Powered by
           <a
             href="https://coolify.hanif.app"
-            class="text-neutral-500 hover:text-neutral-300 transition-colors"
+            class="text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors"
             >Coolify</a
           >
         </p>
       </footer>
     </main>
+
+    <script is:inline>
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    </script>
   </body>
 </html>
