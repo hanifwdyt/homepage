@@ -1,0 +1,41 @@
+---
+import TechTag from "./TechTag.astro";
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const storyUrl = `https://hanif.tw/projects/${project.slug}`;
+---
+
+<article class="group border border-neutral-200 dark:border-border rounded-xl p-5 transition-all duration-200 hover:border-cyan-500/50 dark:hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.08)]">
+  <h3 class="font-mono font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-cyan-500 transition-colors">
+    {project.name}
+  </h3>
+  <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-2 leading-relaxed">
+    {project.description}
+  </p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    {project.stack.map((tech) => <TechTag label={tech} />)}
+  </div>
+  <div class="flex gap-4 mt-4 text-sm font-mono">
+    <a
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-neutral-500 hover:text-cyan-500 transition-colors"
+    >
+      live &rarr;
+    </a>
+    <a
+      href={storyUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-neutral-500 hover:text-cyan-500 transition-colors"
+    >
+      story &rarr;
+    </a>
+  </div>
+</article>

@@ -1,0 +1,30 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<section class="mb-16">
+  <div class="flex items-start justify-between">
+    <div>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+        Hanif Tri Widiyanto
+      </h1>
+      <p class="font-mono text-cyan-500 mt-2 text-sm">
+        &gt; software engineer
+      </p>
+    </div>
+    <ThemeToggle />
+  </div>
+
+  <p class="text-neutral-500 dark:text-neutral-400 mt-6 leading-relaxed max-w-lg">
+    I build and ship real products — from full-stack web apps to Telegram bots and monitoring tools.
+    Most of them solve my own problems, and I self-host everything.
+  </p>
+
+  <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-sm font-mono text-neutral-400 dark:text-neutral-500">
+    <a href="https://github.com/hanifwdyt" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-500 transition-colors">github.com/hanifwdyt</a>
+    <span class="select-none">&middot;</span>
+    <a href="mailto:hi@hanif.app" class="hover:text-cyan-500 transition-colors">hi@hanif.app</a>
+    <span class="select-none">&middot;</span>
+    <a href="https://hanif.tw" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-500 transition-colors">hanif.tw</a>
+  </div>
+</section>

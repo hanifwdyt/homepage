@@ -1,166 +1,22 @@
 ---
-const apps = [
-  {
-    name: "mangan",
-    url: "https://mangan.hanif.app",
-    icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z",
-    description:
-      "Find restaurants from YouTube food reviews near you. Syncs video data and maps locations — just pick a radius and discover places to eat.",
-  },
-  {
-    name: "miniboard",
-    url: "https://task.hanif.app",
-    icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2",
-    description:
-      "A minimal kanban board I built because every task manager out there has too many features. This one just has columns and cards — that's it.",
-  },
-  {
-    name: "netflix-forwarder",
-    url: "https://ijin-masuk-netflix.hanif.app",
-    icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
-    description:
-      "Forwards Netflix household confirmation emails so my family can verify without bugging me. Set it up once, never think about it again.",
-  },
-  {
-    name: "pomodo",
-    url: "https://pomodo.hanif.app",
-    icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
-    description:
-      "A pomodoro timer + to-do list combo. Simple focus tool — set a timer, check off tasks, repeat.",
-  },
-  {
-    name: "kana-quiz",
-    url: "https://kana.hanif.app",
-    icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
-    description:
-      "Practice reading hiragana and katakana with timed quizzes. Pick a level, type the romaji, and track your progress.",
-  },
-  {
-    name: "bagirata",
-    url: "https://bagirata.hanif.app/bagirata",
-    icon: "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5l-3-3m0 0l-3 3m3-3v12",
-    description:
-      "Split bills fairly with friends. No sign-up, no fuss — just enter what everyone paid and who owes whom.",
-  },
-  {
-    name: "aturuang",
-    url: "https://aturuang.hanif.app",
-    icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-    description:
-      "Track daily expenses via Telegram. Just text what you spent — AI parses it, saves it, and shows you where your money goes.",
-  },
-];
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Footer from "../components/Footer.astro";
+import { projects } from "../data/projects";
 ---
 
-<html lang="en" class="dark">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>hanif.app</title>
-    <meta
-      name="description"
-      content="Things I build and run on the internet."
-    />
-    <script is:inline>
-      const theme = localStorage.getItem('theme');
-      if (theme === 'light') {
-        document.documentElement.classList.remove('dark');
-      } else if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else if (!window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.classList.remove('dark');
-      }
-    </script>
-  </head>
-  <body class="bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 min-h-screen transition-colors">
-    <main class="max-w-2xl mx-auto px-6 py-20">
-      <!-- Header with theme toggle -->
-      <div class="flex items-center justify-between mb-16">
-        <section>
-          <h1 class="text-4xl font-bold tracking-tight mb-3">hanif.app</h1>
-          <p class="text-neutral-500 dark:text-neutral-400 text-lg">
-            Small tools I build to solve my own problems.
-          </p>
-        </section>
-        <button
-          id="theme-toggle"
-          type="button"
-          class="p-2 rounded-lg text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-          aria-label="Toggle theme"
-        >
-          <!-- Sun icon (shown in dark mode) -->
-          <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-          <!-- Moon icon (shown in light mode) -->
-          <svg class="w-5 h-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-          </svg>
-        </button>
-      </div>
+<BaseLayout>
+  <Hero />
 
-      <!-- Apps -->
-      <section>
-        <h2 class="text-sm font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-6">
-          Apps
-        </h2>
-        <div class="space-y-4">
-          {apps.map((app) => (
-            <a
-              href={app.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block group border border-neutral-200 dark:border-neutral-800 rounded-xl p-5 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors"
-            >
-              <div class="flex items-start gap-4">
-                <div class="mt-0.5 p-2 rounded-lg bg-neutral-100 dark:bg-neutral-900 text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d={app.icon}
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-black dark:group-hover:text-white transition-colors">
-                    {app.name}
-                  </h3>
-                  <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-1 leading-relaxed">
-                    {app.description}
-                  </p>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
+  <section>
+    <h2 class="font-mono text-sm text-neutral-400 dark:text-neutral-500 mb-6">
+      // projects
+    </h2>
+    <div class="space-y-4">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
 
-      <!-- Footer -->
-      <footer class="mt-20 pt-8 border-t border-neutral-200 dark:border-neutral-800">
-        <p class="text-sm text-neutral-400 dark:text-neutral-600">
-          Built by Hanif &middot; Powered by
-          <a
-            href="https://coolify.hanif.app"
-            class="text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors"
-            >Coolify</a
-          >
-        </p>
-      </footer>
-    </main>
-
-    <script is:inline>
-      document.getElementById('theme-toggle').addEventListener('click', () => {
-        const isDark = document.documentElement.classList.toggle('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      });
-    </script>
-  </body>
-</html>
+  <Footer />
+</BaseLayout>
