@@ -7,35 +7,81 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const storyUrl = `https://hanif.tw/projects/${project.slug}`;
+const isPublic = project.access === "public";
+const isProtected = project.access === "protected";
+const isPrivate = project.access === "private";
 ---
 
-<article class="group border border-neutral-200 dark:border-border rounded-xl p-5 transition-all duration-200 hover:border-cyan-500/50 dark:hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.08)]">
-  <h3 class="font-mono font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-cyan-500 transition-colors">
+<article
+  class:list={[
+    "group relative border rounded-xl p-5 transition-all duration-200",
+    isPublic && "border-neutral-200 dark:border-border hover:border-cyan-500/50 dark:hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.08)]",
+    isProtected && "border-neutral-200 dark:border-border hover:border-amber-500/40 dark:hover:border-amber-500/40 hover:shadow-[0_0_20px_rgba(245,158,11,0.06)] cursor-pointer",
+    isPrivate && "border-neutral-100 dark:border-neutral-800/60 opacity-60",
+  ]}
+  {...isProtected ? { "data-protected-url": project.url } : {}}
+>
+  <!-- Access badge -->
+  {isProtected && (
+    <span class="absolute top-4 right-4 inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-mono rounded bg-amber-500/10 text-amber-500 border border-amber-500/20">
+      <svg class="size-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+      passcode
+    </span>
+  )}
+  {isPrivate && (
+    <span class="absolute top-4 right-4 inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-mono rounded bg-neutral-200 dark:bg-neutral-800 text-neutral-400 dark:text-neutral-500">
+      <svg class="size-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+      private
+    </span>
+  )}
+
+  <!-- Title -->
+  <h3
+    class:list={[
+      "font-mono font-semibold transition-colors pr-16",
+      isPublic && "text-neutral-900 dark:text-neutral-100 group-hover:text-cyan-500",
+      isProtected && "text-neutral-900 dark:text-neutral-100 group-hover:text-amber-400",
+      isPrivate && "text-neutral-500 dark:text-neutral-500",
+    ]}
+  >
     {project.name}
   </h3>
+
+  <!-- Description -->
   <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-2 leading-relaxed">
     {project.description}
   </p>
+
+  <!-- Stack tags -->
   <div class="flex flex-wrap gap-1.5 mt-3">
     {project.stack.map((tech) => <TechTag label={tech} />)}
   </div>
+
+  <!-- Actions -->
   <div class="flex gap-4 mt-4 text-sm font-mono">
-    <a
-      href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="text-neutral-500 hover:text-cyan-500 transition-colors"
-    >
-      live &rarr;
-    </a>
-    <a
-      href={storyUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="text-neutral-500 hover:text-cyan-500 transition-colors"
-    >
-      story &rarr;
-    </a>
+    {isPublic && (
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-neutral-500 hover:text-cyan-500 transition-colors"
+      >
+        live &rarr;
+      </a>
+    )}
+    {isProtected && (
+      <span class="text-amber-500/60 group-hover:text-amber-400 transition-colors select-none">
+        enter passcode &rarr;
+      </span>
+    )}
+    {isPrivate && (
+      <span class="text-neutral-400 dark:text-neutral-600 select-none">
+        internal only
+      </span>
+    )}
   </div>
 </article>

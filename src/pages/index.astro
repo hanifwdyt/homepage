@@ -2,21 +2,66 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import PasscodeModal from "../components/PasscodeModal.astro";
 import Footer from "../components/Footer.astro";
-import { projects } from "../data/projects";
+import { publicProjects, protectedProjects, privateProjects } from "../data/projects";
 ---
 
 <BaseLayout>
   <Hero />
 
-  <section>
-    <h2 class="font-mono text-sm text-neutral-400 dark:text-neutral-500 mb-6">
-      // projects
-    </h2>
-    <div class="space-y-4">
-      {projects.map((project) => <ProjectCard project={project} />)}
+  <!-- PUBLIC APPS -->
+  <section class="mb-14">
+    <div class="flex items-center gap-3 mb-6">
+      <h2 class="font-mono text-sm text-neutral-400 dark:text-neutral-500">
+        // apps
+      </h2>
+      <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-500">
+        open
+      </span>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      {publicProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <!-- PROTECTED APPS -->
+  <section class="mb-14">
+    <div class="flex items-center gap-3 mb-6">
+      <h2 class="font-mono text-sm text-neutral-400 dark:text-neutral-500">
+        // personal
+      </h2>
+      <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-500 border border-amber-500/20">
+        passcode
+      </span>
+    </div>
+    <p class="text-xs text-neutral-400 dark:text-neutral-600 font-mono mb-4">
+      Personal dashboards I share selectively. Click any card to enter a passcode.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      {protectedProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <!-- PRIVATE APPS -->
+  <section class="mb-14">
+    <div class="flex items-center gap-3 mb-6">
+      <h2 class="font-mono text-sm text-neutral-400 dark:text-neutral-500">
+        // internal
+      </h2>
+      <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-neutral-200 dark:bg-neutral-800 text-neutral-400 dark:text-neutral-500">
+        private
+      </span>
+    </div>
+    <p class="text-xs text-neutral-400 dark:text-neutral-600 font-mono mb-4">
+      Infrastructure and internal tools. Not publicly accessible.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      {privateProjects.map((project) => <ProjectCard project={project} />)}
     </div>
   </section>
 
   <Footer />
 </BaseLayout>
+
+<PasscodeModal />
