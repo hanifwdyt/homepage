@@ -119,6 +119,24 @@ export const projects: Project[] = [
     slug: "netflix-forwarder",
     access: "public",
   },
+  {
+    name: "markdown",
+    description:
+      "Render markdown with themes and share it via a short link. Write or paste, pick a theme, and get a clean shareable page.",
+    url: "https://markdown.hanif.app",
+    stack: ["Express", "marked", "SQLite"],
+    slug: "markdown",
+    access: "public",
+  },
+  {
+    name: "chart",
+    description:
+      "Chart image generation API. Send data, get back a rendered chart image — no browser needed.",
+    url: "https://chart.hanif.app",
+    stack: ["Express", "Chart.js", "node-canvas"],
+    slug: "chart",
+    access: "public",
+  },
 
   // ── PROTECTED ────────────────────────────────────────────────────────────
   {
