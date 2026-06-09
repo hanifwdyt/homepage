@@ -240,6 +240,15 @@ export const projects: Project[] = [
     slug: "review",
     access: "private",
   },
+  {
+    name: "status",
+    description:
+      "Public status page for all hanif.app services. Checks every site from the Cloudflare edge every 2 minutes and emails alerts on downtime.",
+    url: "https://status.hanif.app",
+    stack: ["Cloudflare Workers", "KV", "Resend"],
+    slug: "status",
+    access: "public",
+  },
 ];
 
 export const publicProjects = projects.filter((p) => p.access === "public");
