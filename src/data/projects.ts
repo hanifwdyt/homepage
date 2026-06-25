@@ -268,7 +268,6 @@ export const projects: Project[] = [
     access: "private",
   },
   {
-<<<<<<< HEAD
     name: "status",
     description:
       "Public status page for all hanif.app services. Checks every site from the Cloudflare edge every 2 minutes and emails alerts on downtime.",
@@ -276,7 +275,8 @@ export const projects: Project[] = [
     stack: ["Cloudflare Workers", "KV", "Resend"],
     slug: "status",
     access: "public",
-=======
+  },
+  {
     name: "account",
     description:
       "Session and cookie management for internal tools. Auth gateway for hanif.app services.",
@@ -284,7 +284,6 @@ export const projects: Project[] = [
     stack: ["Next.js", "SQLite"],
     slug: "account",
     access: "private",
->>>>>>> 8fa2ada (feat: add blog, chat, bayar, and account to projects list)
   },
 ];
 
