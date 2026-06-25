@@ -137,6 +137,33 @@ export const projects: Project[] = [
     slug: "chart",
     access: "public",
   },
+  {
+    name: "blog",
+    description:
+      "Personal writing — engineering notes, reflections, and things I want to remember. Pulls articles from nulis.",
+    url: "https://blog.hanif.app",
+    stack: ["Next.js", "Recharts", "SQLite"],
+    slug: "blog",
+    access: "public",
+  },
+  {
+    name: "chat",
+    description:
+      "AI chat with personas, system prompts, conversation history, tags, and share links. Multi-model, IndexedDB-backed.",
+    url: "https://chat.hanif.app",
+    stack: ["Next.js", "IndexedDB", "SSE"],
+    slug: "chat",
+    access: "public",
+  },
+  {
+    name: "bayar",
+    description:
+      "My payment page — bank accounts, e-wallets, and QRIS in one place. Tap to copy, scan to pay.",
+    url: "https://payment.hanif.app",
+    stack: ["Next.js", "Tailwind"],
+    slug: "bayar",
+    access: "public",
+  },
 
   // ── PROTECTED ────────────────────────────────────────────────────────────
   {
@@ -241,6 +268,7 @@ export const projects: Project[] = [
     access: "private",
   },
   {
+<<<<<<< HEAD
     name: "status",
     description:
       "Public status page for all hanif.app services. Checks every site from the Cloudflare edge every 2 minutes and emails alerts on downtime.",
@@ -248,6 +276,15 @@ export const projects: Project[] = [
     stack: ["Cloudflare Workers", "KV", "Resend"],
     slug: "status",
     access: "public",
+=======
+    name: "account",
+    description:
+      "Session and cookie management for internal tools. Auth gateway for hanif.app services.",
+    url: "https://account.hanif.app",
+    stack: ["Next.js", "SQLite"],
+    slug: "account",
+    access: "private",
+>>>>>>> 8fa2ada (feat: add blog, chat, bayar, and account to projects list)
   },
 ];
 
