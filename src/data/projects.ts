@@ -129,6 +129,15 @@ export const projects: Project[] = [
     access: "public",
   },
   {
+    name: "anki",
+    description:
+      "Learn JLPT N5 kanji as playful mahjong tiles. Flip cards, grade your recall, and a spaced-repetition engine schedules each kanji so it sticks.",
+    url: "https://anki.hanif.app",
+    stack: ["Vanilla JS", "Express", "localStorage"],
+    slug: "anki",
+    access: "public",
+  },
+  {
     name: "chart",
     description:
       "Chart image generation API. Send data, get back a rendered chart image — no browser needed.",
