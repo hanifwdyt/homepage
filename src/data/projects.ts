@@ -12,6 +12,15 @@ export interface Project {
 export const projects: Project[] = [
   // ── PUBLIC ──────────────────────────────────────────────────────────────
   {
+    name: "quran.hanif.app",
+    description:
+      "Read the Qur'an with four tafsir side by side, word-by-word analysis, and an AI librarian that only quotes the scholars — every claim is verified against its source before it renders, so it cannot fabricate.",
+    url: "https://quran.hanif.app",
+    stack: ["React", "Express", "DeepSeek"],
+    slug: "quran",
+    access: "public",
+  },
+  {
     name: "ai.hanif.app",
     description:
       "Multi-model AI chat. Streaming, message editing, system prompts, conversation pinning, tags, share links, and ⌘K command palette.",
