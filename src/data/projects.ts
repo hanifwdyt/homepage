@@ -12,12 +12,30 @@ export interface Project {
 export const projects: Project[] = [
   // ── PUBLIC ──────────────────────────────────────────────────────────────
   {
-    name: "quran.hanif.app",
+    name: "quran",
     description:
-      "Read the Qur'an with four tafsir side by side, word-by-word analysis, and an AI librarian that only quotes the scholars — every claim is verified against its source before it renders, so it cannot fabricate.",
+      "Read the Qur'an with four tafsir side by side, word-by-word analysis, and an AI librarian that only ever quotes the scholars — every citation is verified against its source before it renders, so it cannot fabricate.",
     url: "https://quran.hanif.app",
     stack: ["React", "Express", "DeepSeek"],
     slug: "quran",
+    access: "public",
+  },
+  {
+    name: "denah",
+    description:
+      "A 2D/3D floor plan drafting instrument. Draw walls and rooms emerge on their own, furnish them from a 55-piece catalog, then walk the whole thing in 3D.",
+    url: "https://denah.hanif.app",
+    stack: ["React", "Konva", "three.js", "Zustand"],
+    slug: "denah",
+    access: "public",
+  },
+  {
+    name: "playground",
+    description:
+      "Run code in 35+ languages straight from the browser. Pick a language, hit run, see the output — no setup, no install.",
+    url: "https://playground.hanif.app",
+    stack: ["Vanilla JS", "Monaco", "Wandbox API"],
+    slug: "playground",
     access: "public",
   },
   {
