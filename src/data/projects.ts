@@ -12,6 +12,15 @@ export interface Project {
 export const projects: Project[] = [
   // ── PUBLIC ──────────────────────────────────────────────────────────────
   {
+    name: "feeling",
+    description:
+      "An emotion journal built on the Yale Mood Meter. Place yourself on two axes before you reach for a word, then pick from a vocabulary rich enough to tell kesal from kecewa — naming it precisely is what regulates it. No streaks, on purpose. Your journal never leaves your phone.",
+    url: "https://feeling.hanif.app",
+    stack: ["React", "Express", "DeepSeek"],
+    slug: "feeling",
+    access: "public",
+  },
+  {
     name: "quran",
     description:
       "Read the Qur'an with four tafsir side by side, word-by-word analysis, and an AI librarian that only ever quotes the scholars — every citation is verified against its source before it renders, so it cannot fabricate.",
