@@ -212,6 +212,15 @@ export const projects: Project[] = [
 
   // ── PROTECTED ────────────────────────────────────────────────────────────
   {
+    name: "cuan",
+    description:
+      "A 24/7 paper-trading arena where 9 crypto strategies compete on live OKX perpetual data — funding rates, open interest, liquidation cascades — plus an on-chain trending scanner. Weekly evolution culls the losers and remixes the winners; an AI assistant explains every signal but decides nothing.",
+    url: "https://cuan.hanif.app",
+    stack: ["Node.js", "SQLite", "WebSocket", "DeepSeek"],
+    slug: "cuan",
+    access: "protected",
+  },
+  {
     name: "calendar",
     description:
       "My weekly schedule — WFO/WFH days, gym, swim, run, and client work. Managed by Punakawan agents.",
