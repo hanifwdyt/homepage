@@ -192,15 +192,6 @@ export const projects: Project[] = [
     access: "public",
   },
   {
-    name: "chat",
-    description:
-      "AI chat with personas, system prompts, conversation history, tags, and share links. Multi-model, IndexedDB-backed.",
-    url: "https://chat.hanif.app",
-    stack: ["Next.js", "IndexedDB", "SSE"],
-    slug: "chat",
-    access: "public",
-  },
-  {
     name: "bayar",
     description:
       "My payment page — bank accounts, e-wallets, and QRIS in one place. Tap to copy, scan to pay.",
@@ -329,15 +320,6 @@ export const projects: Project[] = [
     stack: ["Cloudflare Workers", "KV", "Resend"],
     slug: "status",
     access: "public",
-  },
-  {
-    name: "account",
-    description:
-      "Session and cookie management for internal tools. Auth gateway for hanif.app services.",
-    url: "https://account.hanif.app",
-    stack: ["Next.js", "SQLite"],
-    slug: "account",
-    access: "private",
   },
 ];
 
