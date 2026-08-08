@@ -12,6 +12,15 @@ export interface Project {
 export const projects: Project[] = [
   // ── PUBLIC ──────────────────────────────────────────────────────────────
   {
+    name: "foto",
+    description:
+      "Photo storage designed for a human and their AI at the same time. Tap the back of your iPhone twice and the shot is already there — then hand your coding agent an API key and it can file, move, and actually look at your photos. Points it at /llms.txt once and it knows the whole API. Comes in glass or in Windows 98.",
+    url: "https://foto.hanif.app",
+    stack: ["Node", "SQLite", "R2"],
+    slug: "foto",
+    access: "protected",
+  },
+  {
     name: "feeling",
     description:
       "An emotion journal built on the Yale Mood Meter. Place yourself on two axes before you reach for a word, then pick from a vocabulary rich enough to tell kesal from kecewa — naming it precisely is what regulates it. No streaks, on purpose. Your journal never leaves your phone.",
