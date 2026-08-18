@@ -12,6 +12,15 @@ export interface Project {
 export const projects: Project[] = [
   // ── PUBLIC ──────────────────────────────────────────────────────────────
   {
+    name: "links",
+    description:
+      "A link list that asks you nothing. Paste anywhere on the page — one link, sixty links, or a paragraph with links buried in it — and they land in a numbered table with the page title fetched for you, tracking parameters stripped, and duplicates caught before they happen. Numbers stay put even when rows are deleted, so \"it's number 12\" keeps meaning something.",
+    url: "https://links.hanif.app",
+    stack: ["Node", "SQLite", "Vanilla JS"],
+    slug: "links",
+    access: "public",
+  },
+  {
     name: "foto",
     description:
       "Photo storage designed for a human and their AI at the same time. Tap the back of your iPhone twice and the shot is already there — then hand your coding agent an API key and it can file, move, and actually look at your photos. Points it at /llms.txt once and it knows the whole API. Comes in glass or in Windows 98.",
