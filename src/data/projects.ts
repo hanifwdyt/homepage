@@ -12,6 +12,15 @@ export interface Project {
 export const projects: Project[] = [
   // ── PUBLIC ──────────────────────────────────────────────────────────────
   {
+    name: "ui",
+    description:
+      "The design system every other app here is built from. Black and white as the ground, six loud flat colours as the only signal, and three page shapes decided up front — wide for showcases, dashboard for data, compact for small apps. Thirty-five documented components, most of them working without a line of JavaScript. There is an llms.txt so a coding agent reads the rules before it invents its own.",
+    url: "https://ui.hanif.app",
+    stack: ["CSS", "Vanilla JS"],
+    slug: "ui",
+    access: "public",
+  },
+  {
     name: "links",
     description:
       "A link list that asks you nothing. Paste anywhere on the page — one link, sixty links, or a paragraph with links buried in it — and they land in a numbered table with the page title fetched for you, tracking parameters stripped, and duplicates caught before they happen. Numbers stay put even when rows are deleted, so \"it's number 12\" keeps meaning something.",
