@@ -12,6 +12,15 @@ export interface Project {
 export const projects: Project[] = [
   // ── PUBLIC ──────────────────────────────────────────────────────────────
   {
+    name: "wrapped-map",
+    description:
+      "Drop the Timeline.json Google Maps hands you and it becomes the year you actually had: distance walked and flown, countries, cities, and the shape of every trip drawn on a map you can zoom into. Click a trip and the map flies there. It also renders a film — the camera chases the growing route, pauses over each city, then pulls back. Nothing is uploaded, and the page never calls another server: the world map and 34,000 place names ship inside the app.",
+    url: "https://wrapped-map.hanif.app",
+    stack: ["Vanilla JS", "Canvas", "WebCodecs"],
+    slug: "wrapped-map",
+    access: "public",
+  },
+  {
     name: "links",
     description:
       "A link list that asks you nothing. Paste anywhere on the page — one link, sixty links, or a paragraph with links buried in it — and they land in a numbered table with the page title fetched for you, tracking parameters stripped, and duplicates caught before they happen. Numbers stay put even when rows are deleted, so \"it's number 12\" keeps meaning something.",
