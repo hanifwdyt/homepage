@@ -201,6 +201,15 @@ export const projects: Project[] = [
     access: "public",
   },
   {
+    name: "calc",
+    description:
+      "Type a sum the way you would say it — 150rb diskon 20%, 3 jam 20 menit + 45 menit — and the answer appears as you type. Indonesian and English, no syntax to learn.",
+    url: "https://calc.hanif.app",
+    stack: ["Vanilla JS", "Express", "localStorage"],
+    slug: "calc",
+    access: "public",
+  },
+  {
     name: "chart",
     description:
       "Chart image generation API. Send data, get back a rendered chart image — no browser needed.",
