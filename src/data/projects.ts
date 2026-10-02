@@ -174,12 +174,12 @@ export const projects: Project[] = [
     access: "public",
   },
   {
-    name: "netflix forwarder",
+    name: "ijin masuk",
     description:
-      "Forwards Netflix household confirmation emails so my family can verify without bugging me. Set it up once, never think about it again.",
-    url: "https://ijin-masuk-netflix.hanif.app",
+      "Forwards household sign-in confirmation emails so my family can verify without bugging me. Set it up once, never think about it again.",
+    url: "https://ijin-masuk.hanif.app",
     stack: ["Go", "IMAP", "SQLite"],
-    slug: "netflix-forwarder",
+    slug: "ijin-masuk",
     access: "public",
   },
   {
